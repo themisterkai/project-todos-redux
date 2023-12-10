@@ -1,8 +1,10 @@
+import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeToDo, toggleToDo } from '../reducers/toDos';
 
 export const ToDo = ({ toDo }) => {
   const dispatch = useDispatch();
+
   const handleToggleToDo = id => {
     dispatch(toggleToDo({ id }));
   };
@@ -21,18 +23,25 @@ export const ToDo = ({ toDo }) => {
             id={toDo.id}
             checked={toDo.isComplete}
             onChange={() => handleToggleToDo(toDo.id)}
-          />{' '}
-          <div>{toDo.title}</div>
-          <div>{toDo.isComplete.toString()}</div>
-          <div>{new Date(toDo.date).toISOString()}</div>
-          <button
+          />
+          <label className="toDoCheckboxLabel" htmlFor={toDo.id}>
+            {toDo.title}
+          </label>
+          <div className="toDoDate">
+            {new Date(toDo.date).toISOString().split('T')[0]}
+          </div>
+          <div
             className="removeToDoButton"
             onClick={() => handleRemoveToDo(toDo.id)}
           >
-            Remove To Do
-          </button>
+            <span class="material-symbols-outlined">delete</span>
+          </div>
         </>
       )}
     </div>
   );
+};
+
+ToDo.propTypes = {
+  toDo: PropTypes.object.isRequired,
 };
