@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { addToDo } from '../reducers/toDos';
 import { generateNewToDo } from '../helper';
+import { useDispatch } from 'react-redux';
 
 export const AddToDo = () => {
-  const [title, setTitle] = useState();
-  // const isBreatheTimerRunning = useSelector(state => state.ToDos);
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState('');
 
   const handleKeyUp = e => {
     if (e.key === 'Enter') {
@@ -12,8 +13,9 @@ export const AddToDo = () => {
     }
   };
 
-  const handleSubmitToDo = title => {
-    dispatch(addToDo({ toDo: generateNewToDo(title) }));
+  const handleSubmitToDo = () => {
+    const toDo = generateNewToDo(title);
+    dispatch(addToDo({ toDo }));
   };
 
   return (

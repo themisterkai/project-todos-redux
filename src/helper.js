@@ -1,8 +1,8 @@
 export const generateNewToDo = title => {
   return {
-    id: 'uuid',
-    isCompleted: false,
-    date: new Date(),
+    id: crypto.randomUUID(),
+    isComplete: false,
+    date: new Date().getTime(),
     title,
   };
 };
