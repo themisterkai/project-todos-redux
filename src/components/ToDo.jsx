@@ -30,11 +30,13 @@ export const ToDo = ({ toDo }) => {
           <div className="toDoDate">
             {new Date(toDo.date).toISOString().split('T')[0]}
           </div>
-          <div
-            className="removeToDoButton"
-            onClick={() => handleRemoveToDo(toDo.id)}
-          >
-            <span class="material-symbols-outlined">delete</span>
+          <div className="removeToDoButton">
+            <span
+              class="material-symbols-outlined"
+              onClick={() => handleRemoveToDo(toDo.id)}
+            >
+              delete
+            </span>
           </div>
         </>
       )}

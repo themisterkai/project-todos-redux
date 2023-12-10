@@ -84,6 +84,9 @@ body {
 }
 
 .removeToDoButton {
-  cursor: pointer;
   text-align: right;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
 }
